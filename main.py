@@ -6,12 +6,15 @@ workout = workouts[0]
 
 for session in workouts:
 	try:
-		if session.metrics:
-			print(session.metrics)
+		print(dir(session.metrics))
+		distance = session.metrics.distance_summary.value
+		print('I went %s miles' % distance)
+		# print(session.metrics.distance_summary.value)
+		# print(session.metrics.speed)
+		# print(session.metrics.output_summary)
+		# print(session.metrics.output)
+		# print(session.metrics.calories_summary)
 	except Exception as e:
 		print(e)
-	print(session)
-	print(session.id)
-	print(dir(session))
-	print(type(session))
+	
 	print()
