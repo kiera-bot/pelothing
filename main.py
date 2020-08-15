@@ -27,10 +27,11 @@ def parse_workout(workout):
 		}
 		return parsed_data
 
+		
+
 	except Exception as e:
 		logging.error(e)
-		return
-
+	return
 
 
 # Main Function
@@ -41,6 +42,39 @@ def main(argv):
 	for workout in workouts:
 		workout_data = parse_workout(workout)
 		print(workout_data)
+
+# okay so i got it 
+	with open(FILENAME, 'w') as csvfile:
+		writer = csv.writer(csvfile)
+
+		for value in workout_data.items():
+   			writer.writerow(value)
+
+# okay so i got it 
+	 # with open(FILENAME, 'w') as csvfile:
+	 # 	writer = csv.writer(csvfile)
+
+		# for value in workout_data.items():
+  #  			writer.writerows(value)
+
+
+   	#well...this writes a csv + the first row ;/
+		# with open(FILENAME, 'w') as csvfile:
+		#     fieldnames = ['distance', 'speed', 'output', 'calories', 'workout_time', 'date']
+		#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+		#     writer.writeheader()
+		#     writer.writerows(parsed_data.values)
+
+	#this writes an empty csv but looks promising...
+		# with open(FILENAME, 'w') as csvfile:
+		#     writer = csv.DictWriter(csvfile)
+
+		#     writer.writeheader(parsed_data.keys)
+		#     writer.writerow(parsed_data.values)	
+		
+
+
 	# for session in workouts:
 	# 	try:
 	# 		# print(dir(session))
@@ -72,7 +106,6 @@ def main(argv):
 	# 		print(e)
 		
 	# 	print()
-	# 		#why do i need this last print again?
 
 	# with open('eggs.csv', 'w', newline='') as csvfile:
 	#     spamwriter = csv.writer(csvfile, delimiter=' ',
