@@ -39,16 +39,22 @@ def main(argv):
 	print(FILENAME)
 	logging.info('starting program')
 	workouts = PelotonWorkout.list()
-	for workout in workouts:
-		workout_data = parse_workout(workout)
-		print(workout_data)
+
+	with open(FILENAME, 'w', newline='') as csvfile:
+	    fieldnames = ['distance', 'speed', 'output', 'calories', 'workout_time', 'date']
+	    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+	    writer.writeheader()
+	    for workout in workouts:
+			workout_data = parse_workout(workout)
+			writer.writerow(workout_data)
 
 # okay so i got it 
-	with open(FILENAME, 'w') as csvfile:
-		writer = csv.writer(csvfile)
+	# with open(FILENAME, 'w') as csvfile:
+	# 	writer = csv.writer(csvfile)
 
-		for value in workout_data.items():
-   			writer.writerow(value)
+	# 	for value in workout_data.items():
+ #   			writer.writerow(value)
 
 # okay so i got it 
 	 # with open(FILENAME, 'w') as csvfile:
